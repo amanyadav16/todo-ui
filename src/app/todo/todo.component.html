@@ -1,0 +1,12 @@
+<div>
+  <table>
+    <tbody>
+      @for(todo of todos$ | async; track todo.todoId){
+      <tr>
+        <td>{{ todo?.task }}</td>
+        <td>{{ todo?.createdTime }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
