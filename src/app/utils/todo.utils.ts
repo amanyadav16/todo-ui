@@ -16,7 +16,7 @@ export class TodoUtility {
 
   deleteKey(data: any, key: string) {
     let dataCopy = { ...data };
-    delete dataCopy['todoId'];
+    delete dataCopy[key];
     return dataCopy;
   }
 }
