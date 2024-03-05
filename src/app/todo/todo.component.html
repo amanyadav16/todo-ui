@@ -1,10 +1,27 @@
 <div>
+  <input #todoInput type="text" />
+  <button (click)="addTodo(todoInput.value)">add</button>
+</div>
+<div>
   <table>
     <tbody>
       @for(todo of todos$ | async; track todo.todoId){
       <tr>
-        <td>{{ todo?.task }}</td>
+        <td>
+          <div [ngClass]="{ 'line-on-text': todo?.isCompleted }">
+            {{ todo?.task }}
+          </div>
+        </td>
         <td>{{ todo?.createdTime }}</td>
+        <td>
+          <input
+            #abc
+            type="checkbox"
+            (change)="updateTodo(todo)"
+            [checked]="todo?.isCompleted"
+          />
+        </td>
+        <td><button (click)="deleteTodo(todo?.todoId)">remove</button></td>
       </tr>
       }
     </tbody>
